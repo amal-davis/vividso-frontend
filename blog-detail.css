@@ -1,0 +1,395 @@
+ :root{
+      --bg:#060b19;
+      --glass: rgba(12, 32, 68, .35);
+      --text:#eaf3ff;
+      --muted:#9fb3d4;
+      --grad1:#60a5fa; --grad2:#22d3ee; --grad3:#a855f7;
+    }
+
+    *{ box-sizing:border-box; }
+    body{
+      margin:0;
+      font-family:'Poppins', system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif;
+      background:var(--bg);
+      color:var(--text);
+    }
+
+    
+
+/* =================== FIXED NAV WRAPPER =================== */
+.nav-overlay{
+  position: fixed;                          /* keep it visible on scroll */
+  top: max(18px, env(safe-area-inset-top)); /* handle iOS notch */
+  left: 0; right: 0;
+  z-index: 3000;
+}
+
+/* =================== NAV PILL + LINKS =================== */
+/* logo that sits OUTSIDE the pill (used in some layouts) */
+.outside-brand img{ height:32px; width:auto; }
+.outside-brand span{ color:#fff; }
+
+/* remove default navbar padding so we can control spacing */
+.navbar{ padding:0; }
+
+/* blur / rounded pill (desktop / default) */
+.nav-glass{
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  background:#2a4cff;               /* your blue pill */
+  border:1px solid #fff;
+  border-radius:56px;
+  padding:.35rem .75rem;
+  box-shadow: inset 0 0 0 1px rgba(255,255,255,.06), 0 8px 30px rgba(0,0,0,.25);
+  width:100%;                        /* pill grows to full row width */
+}
+
+/* make the UL fill the pill left→right */
+.navbar-collapse{ flex-grow:1; }
+.nav-glass .navbar-nav{
+  margin-left:0 !important;          /* ignore any ms-auto in HTML */
+  width:100%;
+  display:flex;
+  align-items:center;
+  justify-content:space-between;     /* spread items edge to edge */
+  gap:.25rem;
+  padding:0;
+}
+
+/* link + button styles */
+.navbar .nav-link{
+  color:#fff; opacity:.95;
+  border-radius:999px;
+  padding:.6rem .95rem;
+}
+.navbar .nav-link:hover,
+.navbar .nav-link.active{
+  background:#fff; color:#000 !important;
+}
+.btn-pill{
+  border-radius:999px;
+  padding:.55rem 1rem;
+  color:#fff;
+  background:linear-gradient(90deg,var(--grad1),var(--grad2));
+  border:none;
+}
+
+/* toggler on dark bg */
+.navbar-toggler{ border:1px solid rgba(255,255,255,.35); }
+.navbar-toggler-icon{ filter:invert(1) grayscale(1) contrast(200%); }
+
+/* =================== MOBILE BEHAVIOR (no transparent navbar) =================== */
+@media (max-width: 991.98px){
+  .nav-glass{
+    border-radius:20px;
+    padding:.5rem;
+    background:#2a4cff !important;     /* <-- solid blue on mobile (no transparency) */
+    backdrop-filter:none;               /* avoid odd transparency stack on some devices */
+    -webkit-backdrop-filter:none;
+  }
+  /* collapsed menu stacks inside the pill box */
+  .nav-glass .navbar-nav{
+    flex-direction:column;
+    align-items:stretch;
+    gap:.25rem;
+    width:100%;
+  }
+  /* ensure the collapse wrapper itself doesn't introduce transparency */
+  .navbar-collapse{
+    background:transparent !important;
+  }
+  .navbar-toggler{
+    background: rgba(0,0,0,.25);
+    border-color: rgba(255,255,255,.6);
+  }
+}
+
+/* Mobile navbar background */
+@media (max-width: 991.98px) {
+
+
+  .nav-glass {
+    background: transparent !important;  /* let overlay provide the bg */
+    border: none;
+    box-shadow: none;
+  }
+
+  .navbar-toggler {
+    background: rgba(0,0,0,0.25);   /* optional: dark backdrop for button */
+    border-radius: 8px;
+  }
+
+  .navbar-collapse {
+    background: #2a4cff;  /* collapsed menu has solid background */
+    border-radius: 12px;
+    margin-top: 0.5rem;
+    padding: 0.75rem 1rem;
+  }
+
+  .navbar-nav .nav-link {
+    display: block;
+    text-align: left;
+    padding: 0.75rem;
+    border-radius: 6px;
+  }
+}
+
+/* Mobile menu: transparent header initially */
+@media (max-width: 991.98px){
+  /* header bar (the row with logo + toggler) */
+  .navbar-mobile{
+    background: transparent;
+  }
+  /* your blue desktop pill stays invisible on mobile */
+  .navbar-mobile .nav-glass{
+    background: transparent !important;
+    border: 0; box-shadow: none; border-radius: 0;
+    width: 100%;
+  }
+
+  /* The collapsed menu panel */
+  .navbar-mobile .navbar-collapse{
+    position: absolute;                 /* float under the bar */
+    top: calc(100% + 10px);
+    left: 12px; right: 12px;
+    background: rgba(42,76,255,.98) !important;    /* SOLID blue panel */
+    border-radius: 16px;
+    padding: .75rem;
+    box-shadow: 0 14px 32px rgba(0,0,0,.35);
+    z-index: 4000;
+  }
+  /* Ensure Bootstrap collapse uses block in this layout */
+  .navbar-mobile .navbar-collapse.collapse{ display:none !important; }
+  .navbar-mobile .navbar-collapse.show{ display:block !important; }
+
+  /* Stack links vertically and make them full-width touch targets */
+  .navbar-mobile .navbar-nav{
+    flex-direction: column;
+    align-items: stretch;
+    justify-content: flex-start;
+    gap: .35rem;
+    width: 100%;
+  }
+  .navbar-mobile .nav-link,
+  .navbar-mobile .btn-pill{
+    display: block;
+    width: 100%;
+    text-align: left;
+    padding: .85rem 1rem;
+    border-radius: 12px;
+    color: #fff;
+    background: transparent;
+  }
+  .navbar-mobile .nav-link:hover{ background: rgba(255,255,255,.12); }
+  .navbar-mobile .nav-link.active{ background:#fff; color:#000 !important; }
+
+  /* Toggler visibility */
+  .navbar-toggler{
+    background: #2a4cff;
+    border-radius: 10px;
+    border: 1px solid rgba(255,255,255,.6);
+  }
+}
+
+/* When you scroll a bit, give the bar itself a background (nice sticky look) */
+@media (max-width: 991.98px){
+  .navbar-mobile.scrolled{
+    background: #2a4cff;               /* same blue as panel */
+    box-shadow: 0 6px 20px rgba(0,0,0,.25);
+    border-radius: 25px;
+  }
+}
+
+/* Optional: lock body scroll while menu open */
+body.no-scroll{ overflow: hidden; }
+
+    /* ===== HERO ===== */
+   /* Smaller hero height */
+.hero{
+  position:relative;
+  min-height: clamp(520px, 70vh, 820px);   /* was 100vh */
+  display:flex;
+  align-items:center;
+  overflow:hidden;
+  background:
+    radial-gradient(1200px 600px at 20% 60%, rgba(96,165,250,.15), rgba(6,11,25,0) 45%),
+    linear-gradient(180deg, rgba(6,11,25,.45), rgba(6,11,25,.85)),
+    url('what-hero.png') center/cover no-repeat;
+  padding-top: clamp(96px, 12vw, 140px);
+}
+
+@media (max-width: 991px){
+  .hero{ min-height: clamp(440px, 62vh, 720px); }
+}
+
+
+    /* Navbar overlay INSIDE hero */
+    .nav-overlay{ position:absolute; top:18px; left:0; right:0; z-index:20; }
+    /* If you want sticky-on-scroll, change to position:fixed and keep the hero padding-top */
+
+  /* Replace your current .hero-decor filter line with this */
+.hero-decor{
+  position:absolute;
+  right:-120px;
+  top:-110px;
+  width:min(58vw, 720px);
+  height:auto;
+  z-index:1;
+  pointer-events:none;
+  mix-blend-mode: screen;
+  /* brighter + punchier + shadow */
+  filter: brightness(1.20) saturate(1.2) contrast(1.05)
+          drop-shadow(0 18px 40px rgba(0,0,0,.35));
+  opacity:.95;
+}
+
+    .hero .container{ position:relative; z-index:2; }
+
+    .eyebrow{
+      font-size:clamp(.8rem,.7rem + .3vw,1rem);
+      letter-spacing:.08em; text-transform:uppercase; color:#fff; margin-bottom:.75rem;
+    }
+
+    /* Left accent gradient bar parallel to text */
+    .accent-block{ position:relative; padding-left:1.15rem; max-width:1100px; }
+    .accent-block::before{
+      content:""; position:absolute; left:0; top:.25rem; bottom:.25rem; width:8px; border-radius:8px;
+      background:linear-gradient(180deg,var(--grad1),var(--grad2),var(--grad3));
+      box-shadow:0 0 18px rgba(96,165,250,.6);
+    }
+
+    .hero h2{ letter-spacing:.06em; }
+    .hero h1{
+      font-weight:800; line-height:1.08;
+      font-size:clamp(1.9rem, 1.1rem + 3vw, 4rem);
+      margin:0 0 .75rem 0;
+    }
+    .hero .helper{ color:var(--muted); font-size:.95rem; }
+
+ :root{
+  --grad1:#60a5fa;  /* blue  */
+  --grad2:#22d3ee;  /* cyan  */
+  --grad3:#a855f7;  /* violet*/
+}
+
+/* Transparent-fill, gradient-border button */
+.btn-outline-gradient{
+  --bw: 2px;                 /* border width */
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+  gap: .6rem;
+  padding: calc(.9rem - var(--bw)) calc(1.6rem - var(--bw));
+  border-radius: 999px;
+  color: #fff;
+  text-decoration: none;
+  font-weight: 600;
+  background: transparent;   /* keep center transparent */
+  isolation: isolate;        /* keeps pseudo-element behind text */
+  transition: transform .15s ease, box-shadow .2s ease;
+}
+
+/* gradient border drawn by masking the center out */
+.btn-outline-gradient::before{
+  content: "";
+  position: absolute;
+  inset: 0;
+  padding: var(--bw);
+  border-radius: inherit;
+  background: linear-gradient(90deg, var(--grad1), var(--grad2), var(--grad3));
+  -webkit-mask: 
+      linear-gradient(#000 0 0) content-box,
+      linear-gradient(#000 0 0);
+  -webkit-mask-composite: xor;    /* Safari */
+  mask: 
+      linear-gradient(#000 0 0) content-box,
+      linear-gradient(#000 0 0);
+  mask-composite: exclude;        /* Others */
+  pointer-events: none;
+  opacity: .95;
+}
+
+/* optional: soft outer glow on hover */
+.btn-outline-gradient:hover{
+  transform: translateY(-1px);
+  box-shadow: 0 10px 24px rgba(34,211,238,.25);
+}
+
+
+
+    /* ===== Responsive ===== */
+    @media (max-width: 991.98px){ .nav-glass{ border-radius:20px; } }
+    @media (max-width: 768px){
+      .hero{ text-align:center; }
+      .accent-block{ padding-left:0; }
+      .accent-block::before{
+        left:50%; transform:translateX(-50%);
+        width:64px; height:6px; top:-14px; bottom:auto; border-radius:99px;
+      }
+      .hero-decor{ width:420px; right:-160px; top:-140px; opacity:.8; }
+      .btn-gradient-border{ width:100%; justify-content:center; }
+    }
+
+/* 1) Make the navbar float on top of every page */
+.nav-overlay{
+  position: fixed;                                 /* was: absolute */
+  top: max(18px, env(safe-area-inset-top));        /* iOS notch-safe */
+  left: 0;
+  right: 0;
+  z-index: 3000;
+}
+
+/* 2) Keep space for the fixed bar (you already have this on .hero) */
+.hero{
+  padding-top: clamp(96px, 12vw, 140px);           /* leave as-is */
+}
+
+/* 3) Nice mobile dropdown when fixed */
+@media (max-width: 991.98px){
+  .nav-glass{ border-radius: 20px; }
+
+  /* give the collapsed menu its own blurred box under the fixed bar */
+  .nav-glass .navbar-collapse{
+    background: rgba(12,32,68,.45);
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+    border-radius: 16px;
+    margin-top: .5rem;
+    padding: .5rem;
+    max-height: calc(100vh - 120px);               /* scroll if too tall */
+    overflow: auto;
+  }
+}
+/* weight helper */
+.fw-800 { font-weight: 800; }
+
+/* hero */
+.blog-hero .blog-title{
+  font-size: clamp(1.8rem, 1.1rem + 3.2vw, 3.4rem);
+  line-height: 1.06;
+  letter-spacing: .01em;
+}
+.blog-hero .meta{ letter-spacing: .02em; }
+
+/* keep the article body readable width */
+.content-narrow{ max-width: 980px; }
+
+.blog-content p,
+.blog-content li{
+  font-size: clamp(1rem, .96rem + .25vw, 1.125rem);
+  line-height: 1.8;
+}
+.blog-content h2{
+  margin-top: 2rem; margin-bottom: .75rem; font-weight: 800;
+}
+.blog-content h3{
+  margin-top: 1.5rem; margin-bottom: .5rem; font-weight: 800;
+}
+
+/* image crop helper */
+.object-fit-cover{ width:100%; height:100%; object-fit: cover; }
+
+/* optional: slightly larger top/bottom spacing on lg+ */
+@media (min-width: 992px){
+  .py-lg-6{ padding-top: 4.5rem !important; padding-bottom: 4.5rem !important; }
+}

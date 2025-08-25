@@ -1,0 +1,176 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Blog-Detail Page</title>
+                    <link rel="stylesheet" href="blog-detail.css">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.7/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-LN+7fdVzj6u52u30Kp6M/trliBMCMKTyK833zpbD+pXdCLuTusPj697FH4R/5mcr" crossorigin="anonymous">
+      <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700;800&display=swap" rel="stylesheet">
+<link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css" rel="stylesheet">
+  <!-- Owl Carousel -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/assets/owl.carousel.min.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/assets/owl.theme.default.min.css">
+</head>
+<body>
+    
+<header class="hero">
+
+    <!-- NAVBAR OVER HERO -->
+<div class="nav-overlay">
+  <div class="container-xxl">
+    <nav class="navbar navbar-expand-lg navbar-mobile p-0 flex-grow-1">
+      <div class="nav-glass w-100 d-flex align-items-center justify-content-between">
+        <a class="navbar-brand d-flex align-items-center gap-2" href="#">
+          <img src="assets/logo.svg" alt="VIVIDSO">
+        </a>
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#topnav">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="topnav">
+          <ul class="navbar-nav ms-auto align-items-lg-center gap-lg-2">
+            <li class="nav-item"><a class="nav-link " href="#">Home</a></li>
+            <li class="nav-item"><a class="nav-link" href="#">Who We Are</a></li>
+            <li class="nav-item"><a class="nav-link " href="#">What We Do</a></li>
+            <li class="nav-item"><a class="nav-link" href="#">Our Blogs</a></li>
+            <li class="nav-item"><a class="nav-link" href="#">Career</a></li>
+            <li class="nav-item"><a class="nav-link" href="#">Contact Us</a></li>
+          </ul>
+        </div>
+      </div>
+    </nav>
+  </div>
+</div>
+    <!-- /NAVBAR -->
+
+    <!-- NEW: top-right decorative image -->
+
+    <!-- HERO CONTENT -->
+    <div class="container">
+      <div class="row justify-content-start">
+        <div class="col-lg-10 col-12">
+          <div class="eyebrow">Our Blogs</div>
+
+          <!-- <div class="accent-block">
+            <h2 class="h5 fw-semibold text-uppercase text-info mb-2">
+              Transform your business with advanced technologies
+            </h2>
+
+            <h1 class="text-white">Change to elevate your business by embracing advanced technologies</h1>
+
+            <p class="helper mb-4">Future-ready solutions that streamline, scale, and delight.</p>
+
+            <a href="#contact" class="btn-outline-gradient text-center">
+  <span>Let’s Innovate Together</span>
+  <svg width="18" height="18" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+    <path d="M5 12h14M13 5l7 7-7 7" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+  </svg>
+</a>
+
+          </div> -->
+        </div>
+      </div>
+    </div>
+  </header>
+
+
+
+
+  <!-- ===== Blog Hero (title left, image right) ===== -->
+<section class="blog-hero py-5 py-lg-6">
+  <div class="container">
+    <div class="row align-items-center g-4 g-lg-5">
+      <!-- Left: title + meta -->
+      <div class="col-lg-7">
+        <h1 class="blog-title fw-800 mb-3">
+          Seamless Transition from MongoDB to Oracle Autonomous Database Using the MongoDB API
+        </h1>
+
+        <div class="meta text-uppercase small fw-semibold text-secondary mb-3">
+          May 1, 2025 <span class="mx-2">\</span> 3 minutes to read
+        </div>
+
+        <!-- Optional author line (text-only, no photo) -->
+        <!--
+        <div class="author-line text-muted mb-2">
+          By Rahul Chaubey · Director of WinfoCloudx
+        </div>
+        -->
+      </div>
+
+      <!-- Right: hero image -->
+      <div class="col-lg-5">
+        <div class="ratio ratio-4x3">
+          <img
+            src="circle3.png"
+            alt="MongoDB to Oracle Autonomous Database"
+            class="object-fit-cover rounded-4 shadow-sm"
+          />
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ===== Article body ===== -->
+<article class="blog-content py-4 py-lg-5">
+  <div class="container content-narrow">
+    <p class="lead">
+      Enterprises seeking robust scalability, performance, and enterprise-grade security are increasingly
+      looking to move from MongoDB to Oracle’s Autonomous Database.
+    </p>
+
+    <p>
+      The Oracle Database API for MongoDB simplifies the transition by enabling MongoDB applications to run
+      directly on Oracle Autonomous Database with minimal or no code changes. In this blog, we’ll cover how
+      the API works, its benefits, key features, and migration steps.
+    </p>
+
+    <h2>Why consider the MongoDB API on Oracle?</h2>
+    <p>
+      Enjoy Oracle’s reliability and performance while keeping familiar MongoDB drivers and commands. This
+      means faster migrations and lower risk.
+    </p>
+
+    <h3>Key advantages</h3>
+    <ul>
+      <li>Enterprise security and governance</li>
+      <li>Elastic scalability and high availability</li>
+      <li>Lower total cost of ownership</li>
+    </ul>
+
+    <h2>Migration at a glance</h2>
+    <ol>
+      <li>Assess your MongoDB workloads and dependencies</li>
+      <li>Provision Oracle Autonomous Database with the MongoDB API</li>
+      <li>Move data and validate</li>
+      <li>Switch applications with minimal changes</li>
+    </ol>
+
+    <p class="mb-0">
+      Ready to begin? Explore our detailed guide and start your migration journey today.
+    </p>
+  </div>
+</article>
+
+
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.7/dist/js/bootstrap.bundle.min.js" integrity="sha384-ndDqU0Gzau9qJ1lfW4pNLlhNTkCfHzAVBReH9diLvGRem5+R9g2FzA8ZGN954O5Q" crossorigin="anonymous"></script>
+<script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/owl.carousel.min.js"></script>
+<script>
+    document.addEventListener("DOMContentLoaded", function() {
+    const navbar = document.querySelector(".navbar-mobile");
+
+    window.addEventListener("scroll", function() {
+      if (window.scrollY > 50) {
+        navbar.classList.add("scrolled");
+      } else {
+        navbar.classList.remove("scrolled");
+      }
+    });
+  });
+
+</script>
+</body>
+</html>
