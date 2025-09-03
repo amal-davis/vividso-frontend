@@ -1,4 +1,8 @@
- :root{
+html, body {
+    overflow-x: hidden;
+}
+
+:root{
       --bg:#060b19;
       --glass: rgba(12, 32, 68, .35);
       --text:#eaf3ff;
@@ -13,6 +17,7 @@
       background:var(--bg);
       color:var(--text);
     }
+    
 
     
 

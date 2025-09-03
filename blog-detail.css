@@ -14,7 +14,9 @@
       color:var(--text);
     }
 
-    
+    html, body {
+    overflow-x: hidden;
+}
 
 /* =================== FIXED NAV WRAPPER =================== */
 .nav-overlay{
